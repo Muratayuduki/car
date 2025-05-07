@@ -4,8 +4,11 @@ body {
     max-width: 500px;
     margin: auto;
     background:radial-gradient(white, #83dcf5);
-    }
+}
 
+h1 {
+    font-size: 1.5em; /* 少し小さくしました */
+}
 
 label,
 select,
@@ -13,25 +16,58 @@ button {
     margin-top: 10px;
     display: block;
     width: 100%;
-    }
+    padding: 10px; /* パディングを追加してタッチしやすく */
+    font-size: 1em; /* フォントサイズを調整 */
+}
+
+select, button {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
 
 #result {
-        margin-top: 20px;
-        background: #f0f0f0;
-        padding: 20px;
-        border-radius: 8px;
-    }
+    margin-top: 20px;
+    background: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1em; /* 結果のフォントサイズを調整 */
+}
 
+#home {
+    margin-top: 10px;
+    font-size: 0.9em; /* 注意書きのフォントサイズを調整 */
+    color: green;
+}
+
+/* 小さい画面に対する調整 */
 @media screen and (max-width: 600px) {
     body {
         padding: 10px;
-        }
+    }
+    h1 {
+        font-size: 1.2em; /* さらに小さく */
+    }
     label,
     select,
     button {
-        width: 100%;
-        }
+        font-size: 1em; /* モバイルでも適切なサイズに */
+        padding: 8px;
+    }
     #result {
         padding: 10px;
-        }
+        font-size: 0.9em;
+    }
+    #home {
+        font-size: 0.8em;
+    }
 }

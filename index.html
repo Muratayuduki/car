@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>教習所バス時刻検索</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>教習所バス時刻検索</h1>
+
+<label for="stop">バス停を選択：</label>
+<select id="stop">
+    <option value="futaba">双葉保育園前</option>
+    <option value="station">駅前</option>
+</select>
+
+<label for="period">教習の時限を選択：</label>
+<select id="period">
+    <option value="1">1限</option>
+    <option value="2">2限</option>
+    <option value="3">3限</option>
+    <option value="4">4限</option>
+    <option value="5">5限</option>
+    <option value="6">6限</option>
+    <option value="7">7限</option>
+    <option value="8">8限</option>
+    <option value="9">9限</option>
+    <option value="10">10限</option>
+</select>
+
+<button onclick="searchBus()">バス時間を検索</button>
+
+<div id="result"></div>
+<div id ="home"></div>
+
+<script>
+    // 駅前のバス時刻（1限～10限）
+    const stationTimes = {
+        1: "8:12",
+        2: "9:12",
+        3: "10:12",
+        4: "11:12",
+        5: "13:07",
+        6: "14:02",
+        7: "15:02",
+        8: "16:02",
+        9: "17:02",
+        10: "18:02"
+    };
+
+    // 双葉保育園前のバス時刻（1限～10限）
+    const futabaTimes = {
+        1: "8:17",
+        2: "9:17",
+        3: "10:17",
+        4: "11:17",
+        5: "13:12",
+        6: "14:07",
+        7: "15:07",
+        8: "16:07",
+        9: "17:07",
+        10: "18:07"
+    };
+
+    function searchBus() {
+        const stop = document.getElementById("stop").value;
+        const period = parseInt(document.getElementById("period").value);
+
+        let time;
+        if (stop === "station") {
+        time = stationTimes[period];
+        } else if (stop === "futaba") {
+        time = futabaTimes[period];
+        }
+
+        const stopName = stop === "station" ? "駅前" : "双葉保育園前";
+
+        const resultText = (time && time !== "バスなし")
+            ? `${stopName} 発の ${period}限 用のバスは <strong>${time}</strong> 発です。`
+            : `申し訳ありません、${stopName} から ${period}限 用のバスはありません。`;
+
+        document.getElementById("result").innerHTML = resultText;
+        document.getElementById("home").innerText = '５分前には家を出ましょう';
+    }
+</script>
+
+</body>
+</html>
